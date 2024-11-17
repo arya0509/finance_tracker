@@ -21,7 +21,7 @@ export default function CreateTransaction({createTransaction=()=>{}}) {
         
     }
     return(
-        <div className='text-white flex justify-center items-center h-full '>
+        <div className='text-white flex justify-center items-center h-full mt-5 '>
             <form className="flex flex-col border-2 border-black rounded h-96 w-96  items-center bg-gray-800 ">
                 <div className="mt-5 h-1/5 w-full flex justify-around">
                     <label className='text-2xl'>Name</label>

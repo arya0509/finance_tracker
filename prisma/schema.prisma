@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model month {
+  month_id    Int           @id @default(autoincrement())
+  user_id     String?       @db.VarChar(255)
+  month_year  String?       @db.VarChar(7)
+  month_name  String?       @db.VarChar(20)
+  user        user?         @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "month_ibfk_1")
+  transaction transaction[]
+
+  @@index([user_id], map: "month_ibfk_1")
+}
+
+model transaction {
+  transaction_id     Int       @id @default(autoincrement())
+  month_id           Int?
+  transaction_name   String?   @db.VarChar(255)
+  transaction_amount Decimal?  @db.Decimal(10, 2)
+  transaction_date   DateTime? @db.Date
+  month              month?    @relation(fields: [month_id], references: [month_id], onDelete: NoAction, onUpdate: NoAction, map: "transaction_ibfk_1")
+
+  @@index([month_id], map: "transaction_ibfk_1")
+}
+
+model user {
+  user_id    String  @id @db.VarChar(255)
+  user_name  String? @db.VarChar(255)
+  user_email String? @db.VarChar(255)
+  month      month[]
+}

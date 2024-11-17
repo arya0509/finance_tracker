@@ -26,7 +26,7 @@ export default function CreateMonths({onCreateNewMonth=()=>{}}) {
 
 
     return(
-        <div className='text-white flex justify-center items-center h-full '>
+        <div className='text-white flex justify-center items-center h-full mt-5 '>
             <form className="flex flex-col border-2 border-black rounded h-96 w-96  items-center bg-gray-800 ">
 
                 <div className="mt-8 h-1/3 flex w-full justify-around">

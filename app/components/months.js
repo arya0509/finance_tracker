@@ -1,10 +1,18 @@
 'use client';
 import { useState } from "react";
 export default function Months({MonthsAndYears,MonthClicked}) {
+    if(!MonthsAndYears){
+        console.log("Months and years are null");
+        return null;
+    }
     const monthsAndYears = MonthsAndYears;
-    const grupedMonths=monthsAndYears.reduce((acc,monthAndYear)=>{
-        const month=monthAndYear.month;
-        const year=monthAndYear.year;
+    monthsAndYears.map((monthAndYear)=>{
+        console.log("Month and year is:"+monthAndYear.month_name);
+    }
+    );
+    const grupedMonths=(monthsAndYears).reduce((acc,monthAndYear)=>{
+        const month=monthAndYear.month_name;
+        const year=monthAndYear.month_year;
         if(!acc[year]){
             acc[year]=[];
         }
@@ -15,10 +23,13 @@ export default function Months({MonthsAndYears,MonthClicked}) {
         b-a
     );
     function clicked(month,year){
-        MonthClicked(month,year);
+        const newMonth=monthsAndYears.find((monthAndYear)=>{
+            return monthAndYear.month_name===month && monthAndYear.month_year===year;
+        });
+        MonthClicked(newMonth,year);
     }
     return(
-        <div className='text-black flex justify-center items-center flex-col'>
+        <div className='text-black flex justify-center items-center flex-col mt-5'>
            {sortedgroupedYears.map((year,index)=>{
                 return(
                      <div key={index}>
