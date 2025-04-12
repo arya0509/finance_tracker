@@ -1,6 +1,9 @@
 # Finance Tracker - Personal Expense Management App
 
-A full-stack web application built to help users effectively track, manage, and visualize their monthly expenses in a simple and user-friendly way.
+Finance Tracker is a personal expense management web app built to help users gain better control over their spending habits. In a world where money slips away quietly through daily transactions, this tool provides clarity by allowing users to track expenses, categorize them, and instantly view their monthly spending patterns — all through a simple and clean interface.
+
+The app focuses on usability, security, and speed — offering Google OAuth login for quick access, a responsive design for any device, and a MySQL-powered backend for real-time data management. It's built for people who want a no-fluff, straightforward way to see where their money is going.
+
 
 ---
 
