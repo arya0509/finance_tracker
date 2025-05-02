@@ -59,10 +59,10 @@ export default function Page() {
 
 
   const screens = [ 
-    <Months key={months} MonthsAndYears={monthsAndYears} MonthClicked={monthClicked} screenType={setScreen}/>, 
-    <Transactions key={transaction} transactionItems={newTransactions}  screenType={setScreen}  />,
-    <CreateTransaction key={crTransaction} createTransaction={createTransaction}   />, 
-    <CreateMonths key={CrMonths} onCreateNewMonth={createNewMonth}  />
+    <Months key={"months"} MonthsAndYears={monthsAndYears} MonthClicked={monthClicked} screenType={setScreen}/>, 
+    <Transactions key={"transaction"} transactionItems={newTransactions}  screenType={setScreen}  />,
+    <CreateTransaction key={"crTransaction"} createTransaction={createTransaction}   />, 
+    <CreateMonths key={"CrMonths"} onCreateNewMonth={createNewMonth}  />
     ];
 
   const MonthsWords={'January': '01', 'February': '02', 'March': '03', 'April': '04', 'May': '05', 'June': '06', 'July': '07', 'August': '08', 'September': '09', 'October': '10', 'November': '11', 'December': '12'};
