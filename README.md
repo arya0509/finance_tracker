@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Finance Tracker - Personal Expense Management App
 
-## Getting Started
+Finance Tracker is a personal expense management web app built to help users gain better control over their spending habits. In a world where money slips away quietly through daily transactions, this tool provides clarity by allowing users to track expenses, categorize them, and instantly view their monthly spending patterns — all through a simple and clean interface.
 
-First, run the development server:
+The app focuses on usability, security, and speed — offering Google OAuth login for quick access, a responsive design for any device, and a MySQL-powered backend for real-time data management. It's built for people who want a no-fluff, straightforward way to see where their money is going.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Frontend → React.js, Next.js, Tailwind CSS  
+- Backend → Prisma ORM, MySQL  
+- Authentication → Google OAuth  
+- Deployment → Vercel  
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### → Secure User Authentication  
+- Google OAuth integration for easy and secure sign-in.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### → Monthly Expense Calculation  
+- Automatically calculates total expenses and the overall monthly spend.
 
-## Deploy on Vercel
+### → Responsive Dashboard  
+- Clean, minimal UI built with Tailwind CSS for both mobile & desktop users.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### → Real-time Data Storage  
+- Backend powered by MySQL with Prisma ORM for smooth data handling.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
