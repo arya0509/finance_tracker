@@ -2,14 +2,11 @@
 import { useState } from "react";
 export default function Months({MonthsAndYears,MonthClicked}) {
     if(!MonthsAndYears){
-        console.log("Months and years are null");
         return null;
     }
     const monthsAndYears = MonthsAndYears;
-    monthsAndYears.map((monthAndYear)=>{
-        console.log("Month and year is:"+monthAndYear.month_name);
-    }
-    );
+    
+    
     const grupedMonths=(monthsAndYears).reduce((acc,monthAndYear)=>{
         const month=monthAndYear.month_name;
         const year=monthAndYear.month_year;

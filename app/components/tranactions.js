@@ -15,7 +15,7 @@ export default function Transactions({transactionItems,screenType}) {
 
     return(
         <div className='text-black flex justify-center items-center flex-col'>
-            <h1 className='text-2xl font-bold'>Total: $ {totalPrice}</h1>
+            <h1 className='text-2xl font-bold'>Total: $ {totalPrice.toFixed(2)}</h1>
             <h1 className='text-2xl font-bold'>Transaction per head:${ (totalPrice/3).toFixed(2)}</h1>
             <div className="">
                 <button onClick={()=>createTransaction()}>create a new transaction</button>

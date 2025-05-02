@@ -29,7 +29,6 @@ export default function Page() {
       // Only run fetchData if user is defined
       const fetch = async () => {
       await validateUser();
-      console.log('user is validated');
       await fetchData();
       }
       fetch();
@@ -38,7 +37,6 @@ export default function Page() {
 
   const validateUser = async () => {
     try {
-      console.log(user.uid);
       const response = await userAPI(user);
       if(!response){
         console.log('User not validated');
@@ -51,7 +49,6 @@ export default function Page() {
   const fetchData = async () => {
     try {
       const dbMonths = await getMonths(user);
-      console.log(dbMonths.month_name);
       setMonths(dbMonths);
     } catch (error) {
       console.log('Error fetching data:', error);
@@ -92,7 +89,6 @@ export default function Page() {
     };
 
     const res = await addTransaction(newTransaction,currMonth,currYear);
-    console.log("res is is "+res);
     setTransactions([...transactions, res]);
     setNewTransactions([...newTransactions, res]);
     setScreen(1);
@@ -112,7 +108,6 @@ export default function Page() {
       month_year: year,
     };
     const res = await addMonth(newMonth,user);
-    console.log("res is is "+res);
     setMonths([...monthsAndYears, res]);
     setCreateClicked(false);
     setScreen(0);
@@ -124,10 +119,7 @@ export default function Page() {
     setCurrYear(year);
       const dbTransactions= await getTransactions(month,year);
 
-      dbTransactions.map(transaction => {
-        console.log(typeof transaction.transaction_date);
-      }); 
-      console.log("transactions are"+dbTransactions);
+      
       setNewTransactions(dbTransactions.filter(transaction => {
         const date = new Date(transaction.transaction_date);
 
