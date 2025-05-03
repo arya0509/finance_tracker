@@ -19,3 +19,32 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+a:hover{
+  cursor: pointer;
+}
+.transactions-div{
+  width: 95vw;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(auto-fill); 
+  align-items: center;
+  justify-items: center;
+  /* justify-content: center;
+  align-items: center;  */
+  gap: 1.2rem;
+  /* flex-wrap: wrap; */
+}
+.color-divs{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  margin-top: 3vh;
+}
+.color-div{
+  width: 20%;
+  display: flex;
+  gap: 3px;
+}
+

@@ -8,25 +8,47 @@ export async function POST(req, res) {
     try{
         const data= await req.json();
         const { transaction,month } = data;
-        console.log(transaction);
         console.log(month);
         const dateObject = new Date(transaction.transaction_date);
-        
+        console.log(transaction);
          const response=await prisma.transaction.create({
             data: {
                 month_id:month.month_id,
                 transaction_name:transaction.transaction_name,
                 transaction_amount:Number(transaction.transaction_amount),
                 transaction_date:dateObject,
+                transaction_category:transaction.category,
+
             }
         })
+        
+        if(response){
+            console.log("RESPONSE")
+            console.log(response);
+            return NextResponse.json(response);
+        }
+        return NextResponse.json({message: 'Transaction not created'});
+    }catch(e){
+        console.log(e.stack);
+        return NextResponse.json({message: 'Error during when creating transaction'});
+    }
+}
+export async function DELETE(req,res){
+    try{
+        const data= await req.json();
+        const { id } = data;
+         const response=await prisma.transaction.delete({
+            where:{
+                transaction_id:id
+            }
+         })
         
         if(response){
             return NextResponse.json(response);
         }
         return NextResponse.json({message: 'Transaction not created'});
     }catch(e){
-        console.log('Error during when creating transaction:', e);
+        console.log(e.stack);
         return NextResponse.json({message: 'Error during when creating transaction'});
     }
 }
@@ -45,7 +67,8 @@ export async function GET(req, res) {
             return NextResponse.json(transactions);
       
     }catch(e){
-        console.log('Error during when fetching transactions:', error);
+        console.log('Error during when fetching transactions:');
+        console.log(e);
         return NextResponse.json({message: 'Error during when fetching transactions'});
     }
 }

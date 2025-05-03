@@ -85,7 +85,8 @@ export default function Page() {
       transaction_amount: transaction.amount,
       transaction_date: transaction.date,
       month: transaction.month,
-      year: transaction.year
+      year: transaction.year,
+      category:transaction.category,
     };
 
     const res = await addTransaction(newTransaction,currMonth,currYear);

@@ -24,6 +24,7 @@ model transaction {
   transaction_name   String?   @db.VarChar(255)
   transaction_amount Decimal?  @db.Decimal(10, 2)
   transaction_date   DateTime? @db.Date
+  transaction_category String?   @db.VarChar(255) 
   month              month?    @relation(fields: [month_id], references: [month_id], onDelete: NoAction, onUpdate: NoAction, map: "transaction_ibfk_1")
 
   @@index([month_id], map: "transaction_ibfk_1")
