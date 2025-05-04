@@ -25,7 +25,7 @@ The app focuses on usability, security, and speed — offering Google OAuth logi
 - Automatically calculates total expenses and the overall monthly spend.
 
 ### → Responsive Dashboard  
-- Clean, minimal UI built with Tailwind CSS for both mobile & desktop users.
+- Clean, minimal UI built with Tailwind CSS desktop users.
 
 ### → Real-time Data Storage  
 - Backend powered by MySQL with Prisma ORM for smooth data handling.
