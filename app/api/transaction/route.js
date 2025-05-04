@@ -36,10 +36,10 @@ export async function POST(req, res) {
 export async function DELETE(req,res){
     try{
         const data= await req.json();
-        const { id } = data;
+        
          const response=await prisma.transaction.delete({
             where:{
-                transaction_id:id
+                transaction_id:data
             }
          })
         
