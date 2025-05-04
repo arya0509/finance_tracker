@@ -47,4 +47,50 @@ a:hover{
   display: flex;
   gap: 3px;
 }
+.pie-div{
+  width: 50vw;
+  height:80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.buttons-div{
+  width: 50vw;
+  height:80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  
+}
+#a-buttons{
+  background-color: #1f2937 ;
+  width: 15vw;
+  height: 6vh;
+  text-align: center;
+  border-radius: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#a-buttons:hover{
+  background-color: #18202b;
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+.typed-out {
+  overflow: hidden;
+  border-right: .15em solid orange;
+  font-size: 1.6rem;
+  width: 0;
+  animation: typing 1s forwards;
+}
+.container {
+  display: inline-block;
+}
 

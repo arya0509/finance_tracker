@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { NextResponse } from "next/server";
+import { stringify } from 'postcss';
 
 const months = ['','January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November','December'];
 
@@ -57,10 +58,13 @@ export async function GET(req, res) {
     const url = new URL(req.url);
     const month = url.searchParams.get('month');
     const year = url.searchParams.get('year');
+    console.log("month Od is")
+    console.log(month);
+    console.log(JSON.stringify(month));
     try{
         const transactions = await prisma.transaction.findMany({
             where: {
-                month_id: month.month_id,
+                month_id: Number(month),
             }
         });
        
@@ -68,7 +72,7 @@ export async function GET(req, res) {
       
     }catch(e){
         console.log('Error during when fetching transactions:');
-        console.log(e);
+        console.log(e.stack);
         return NextResponse.json({message: 'Error during when fetching transactions'});
     }
 }

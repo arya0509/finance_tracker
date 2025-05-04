@@ -18,6 +18,8 @@ export default  function NavBar({onCreateClicked,MonthClicked=()=>{},screenType}
                 <div className="w-72 flex justify-around pt-8 pl-5">
                     <a className="hover:underline " onClick={()=>handleClick()}>Create</a>
                     <a className="hover:underline" onClick={()=>handleViewClick()}>View</a>
+                    <a className="hover:underline" onClick={()=>screenType(4)}>Home</a>
+
                 </div>
                 <div className="flex justify-center items-center">
                 <h2 className="text-4xl">The Finance Tracker App</h2>

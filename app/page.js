@@ -8,6 +8,7 @@ import Transactions from "./components/tranactions"
 import { useState } from "react";
 import Months from "./components/months"
 import Login from './components/login';
+import Analytics from './components/analytics';
 import {addTransaction,getTransactions} from './_utils/transaction';
 import {addMonth, getMonths} from './_utils/months';
 import userAPI from './_utils/user';
@@ -19,7 +20,7 @@ export default function Page() {
   const [transactions, setTransactions] = useState(transactionItems.transactions);
   const [monthsAndYears, setMonths] = useState();
   const[MonthClicked, setMonthClicked] = useState(false);
-  const [screen,setScreen]=useState(0);
+  const [screen,setScreen]=useState(4);
   const[currMonth, setCurrMonth]=useState('');
   const[currYear, setCurrYear]=useState('');
 
@@ -28,8 +29,8 @@ export default function Page() {
     if (user) {
       // Only run fetchData if user is defined
       const fetch = async () => {
-      await validateUser();
-      await fetchData();
+       validateUser();
+       fetchData();
       }
       fetch();
     }
@@ -62,7 +63,8 @@ export default function Page() {
     <Months key={"months"} MonthsAndYears={monthsAndYears} MonthClicked={monthClicked} screenType={setScreen}/>, 
     <Transactions key={"transaction"} transactionItems={newTransactions}  screenType={setScreen}  />,
     <CreateTransaction key={"crTransaction"} createTransaction={createTransaction}   />, 
-    <CreateMonths key={"CrMonths"} onCreateNewMonth={createNewMonth}  />
+    <CreateMonths key={"CrMonths"} onCreateNewMonth={createNewMonth}  />,
+    <Analytics key={"CrAnalytics"}  screenType={setScreen} monthsAndYears={monthsAndYears}/>
     ];
 
   const MonthsWords={'January': '01', 'February': '02', 'March': '03', 'April': '04', 'May': '05', 'June': '06', 'July': '07', 'August': '08', 'September': '09', 'October': '10', 'November': '11', 'December': '12'};
@@ -138,7 +140,8 @@ export default function Page() {
     {user?(
       <div>
        <NavBar onCreateClicked={onCreateClicked} MonthClicked={setMonthClicked} MonthsAndYears={monthsAndYears} screenType={setScreen} />
-       {screens[screen]}
+       {screen===4?monthsAndYears?<Analytics screenType={setScreen} monthsAndYears={monthsAndYears}/>:"":screens[screen]
+      }
       </div>
     ):(
       <div className="flex flex-col justify-center items-center h-screen">

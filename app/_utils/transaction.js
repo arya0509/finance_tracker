@@ -15,7 +15,8 @@ export async function addTransaction(transaction, month) {
 }
 
 export async function getTransactions(month,year) {
-   const transactions = await fetch(`/api/transaction?month=${month}&year=${year}`, {
+   let monthID=month.month_id;
+   const transactions = await fetch(`/api/transaction?month=${monthID}&year=${year}`, {
         method: 'GET',
         headers: {
         'Content-Type': 'application/json',
