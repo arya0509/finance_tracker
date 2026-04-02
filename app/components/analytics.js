@@ -13,8 +13,7 @@ export default function Analytics({monthsAndYears,screenType}){
         setActiveIndex(index);
     };
     useEffect(()=>{
-        console.log("Im inside the useEffect")
-        console.log(currTransaction)
+       
         if(currTransaction){
             getSum();
         }
@@ -34,11 +33,11 @@ export default function Analytics({monthsAndYears,screenType}){
         "December": 12
     };
     const bgColorForEachCategory = {
-        'Grocery': '#a8d5b8',        // medium green
-        'Food order': '#ffc085',     // medium orange
-        'Mandatory': '#c97b63',      // medium gray
-        'Comfort': '#a3bffa',        // medium blue
-        'Subscriptions': '#e6a8eb'   // medium lavender/pink
+        'Grocery': '#a8d5b8',       
+        'Food order': '#ffc085',    
+        'Mandatory': '#c97b63',     
+        'Comfort': '#a3bffa',       
+        'Subscriptions': '#e6a8eb'  
     };
     function handleClick(){
         screenType(3);
@@ -51,26 +50,25 @@ export default function Analytics({monthsAndYears,screenType}){
     },[])
     function addMonth() {
         const today = new Date();
-    const month=today.getMonth() +1;
-    const year =today.getFullYear();
-    monthsAndYears.forEach(obj => {
-        
-        if(obj.month_year === (year).toString() && (months[obj.month_name].toString())===(month).toString()){
-            setCurrObj(obj);
-            getTrans(obj,year);
+        const month=today.getMonth() +1;
+        const year =today.getFullYear();
+        monthsAndYears.forEach(obj => {
             
-            setCurrMonth(obj.month_name);
-            setCurrYear(obj.month_year);
-        }
-    });
-    
+            if(obj.month_year === (year).toString() && (months[obj.month_name].toString())===(month).toString()){
+                setCurrObj(obj);
+                getTrans(obj,year);
+                
+                setCurrMonth(obj.month_name);
+                setCurrYear(obj.month_year);
+            }
+        });
     }
 
     
     async function getTrans(month,year) {
       const dbTransactions= await getTransactions(month,year);
       if(dbTransactions.length!==0){
-        console.log(dbTransactions);
+       
         setCurrTransaction(dbTransactions);
         
       }
@@ -115,7 +113,7 @@ export default function Analytics({monthsAndYears,screenType}){
     }
     let EmptyData=[{'name':"No Data","sum":100}]
     return(
-        <div>
+        <div className='h-[87vh]'>
             {(isEmpty && !pieData )?
             <div className='flex flex-row'>
             <div className='pie-div'>
@@ -148,7 +146,7 @@ export default function Analytics({monthsAndYears,screenType}){
         </div>
             :
              <div className='flex flex-row'>
-                {console.log( !currTransaction)}
+                
             <div className='pie-div'>
                  <h1 className='text-black text-2xl font-bold'>{currMonth} {currYear}</h1>
 
@@ -171,12 +169,12 @@ export default function Analytics({monthsAndYears,screenType}){
                 
             </div>
             <div className='buttons-div'>
-            <p className='text-black font-bold text-3xl mb-'>Track your expenses, stay on budget, and take control of your financial future. Get insights into your spending habits and make smarter decisions every day.</p>   
-            <a id='a-buttons'  onClick={()=>handleClick()}>Create more months</a>
-            <a id='a-buttons'   onClick={()=>handleViewClick()}>View the created months</a>
+                <p className='text-black font-bold text-3xl mb-'>Track your expenses, stay on budget, and take control of your financial future. Get insights into your spending habits and make smarter decisions every day.</p>   
+                <a id='a-buttons'  onClick={()=>handleClick()}>Create more months</a>
+                <a id='a-buttons'   onClick={()=>handleViewClick()}>View the created months</a>
 
-        </div>
-        </div>
+            </div>
+            </div>
             }
 
             

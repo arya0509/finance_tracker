@@ -1,7 +1,7 @@
 'use client';
 import { useState } from "react";
 
-export default function CreateMonths({onCreateNewMonth=()=>{}}) {
+export default function CreateMonths({createNewMonth}) {
     const months=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var DateObject = new Date();
     const year=DateObject.getFullYear(); 
@@ -21,12 +21,17 @@ export default function CreateMonths({onCreateNewMonth=()=>{}}) {
 
     function clicked(e){
         e.preventDefault();
-        onCreateNewMonth(month, currYear);
+        addMonth();
+        
+    }
+     function addMonth(){
+        
+        createNewMonth(month,currYear);     
     }
 
 
     return(
-        <div className='text-white flex justify-center items-center h-full mt-5 '>
+        <div className='text-white flex justify-center items-center h-[85vh] mt-5 '>
             <form className="flex flex-col border-2 border-black rounded h-96 w-96  items-center bg-gray-800 ">
 
                 <div className="mt-8 h-1/3 flex w-full justify-around">
@@ -42,7 +47,7 @@ export default function CreateMonths({onCreateNewMonth=()=>{}}) {
                 
                 <div className="h-1/3 flex w-full justify-around">
                     <label className='text-2xl'>Choose an year</label>
-                    <select className="bg-slate-500 w-1/3 h-1/3 rounded" value={year} onChange={(e)=>setYear(e.target.value)}>
+                    <select className="bg-slate-500 w-1/3 h-1/3 rounded" value={currYear} onChange={(e)=>setYear(e.target.value)}>
                         {years.map((year, index) => {
                             return(
                                 <option key={index} value={year}>{year}</option>

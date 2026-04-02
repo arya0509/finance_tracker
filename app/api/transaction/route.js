@@ -8,15 +8,16 @@ const prisma = new PrismaClient();
 export async function POST(req, res) {
     try{
         const data= await req.json();
-        const { transaction,month } = data;
-        console.log(month);
-        const dateObject = new Date(transaction.transaction_date);
+        
+        const { transaction,monthID } = data;
+       
+        const dateObject = new Date(transaction.date);
         console.log(transaction);
          const response=await prisma.transaction.create({
             data: {
-                month_id:month.month_id,
-                transaction_name:transaction.transaction_name,
-                transaction_amount:Number(transaction.transaction_amount),
+                month_id:monthID,
+                transaction_name:transaction.name,
+                transaction_amount:Number(transaction.amount),
                 transaction_date:dateObject,
                 transaction_category:transaction.category,
 
@@ -24,8 +25,6 @@ export async function POST(req, res) {
         })
         
         if(response){
-            console.log("RESPONSE")
-            console.log(response);
             return NextResponse.json(response);
         }
         return NextResponse.json({message: 'Transaction not created'});
@@ -57,10 +56,6 @@ export async function DELETE(req,res){
 export async function GET(req, res) {
     const url = new URL(req.url);
     const month = url.searchParams.get('month');
-    const year = url.searchParams.get('year');
-    console.log("month Od is")
-    console.log(month);
-    console.log(JSON.stringify(month));
     try{
         const transactions = await prisma.transaction.findMany({
             where: {

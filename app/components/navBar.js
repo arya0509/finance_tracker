@@ -1,6 +1,6 @@
 import { useUserAuth } from "../_utils/auth-context";
 
-export default  function NavBar({onCreateClicked,MonthClicked=()=>{},screenType}) {
+export default  function NavBar({screenType}) {
     const { user, googleSignIn, firebaseSignOut } = useUserAuth();
     function handleClick(){
        screenType(3);
@@ -9,8 +9,11 @@ export default  function NavBar({onCreateClicked,MonthClicked=()=>{},screenType}
         screenType(0);
     }
     const signOut = async () => {
+        console.log(`user ${user}`);
         await firebaseSignOut();
+       
     }
+    
    
     return(
         <div>
@@ -18,17 +21,17 @@ export default  function NavBar({onCreateClicked,MonthClicked=()=>{},screenType}
                 <div className="w-72 flex justify-around pt-8 pl-5">
                     <a className="hover:underline " onClick={()=>handleClick()}>Create</a>
                     <a className="hover:underline" onClick={()=>handleViewClick()}>View</a>
-                    <a className="hover:underline" onClick={()=>screenType(4)}>Home</a>
+                    <a className="hover:underline" onClick={()=>screenType(4)}>Chart</a>
 
                 </div>
                 <div className="flex justify-center items-center">
                 <h2 className="text-4xl">The Finance Tracker App</h2>
                 </div>
                 <div>
-                    <h1 className="text-white text-2xl pt-8 pr-8">Welcome {user.email}</h1>
+                    <h1 className="text-white text-2xl pt-8 pr-8">Welcome {user.displayName}!</h1>
                 </div>
                 <div className="pt-8 pr-8">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={()=>signOut()}>Sign out</button>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={signOut}>Sign out</button>
                 </div>
              </nav>
              

@@ -55,7 +55,7 @@ export default function Transactions({transactionItems,screenType}) {
     const transactions = transactionItems.sort((a, b) => {
         return new Date(b.transaction_date) - new Date(a.transaction_date);
     });
-    console.log(transactions);
+    
     const totalPrice = transactions.reduce((acc, transaction) => {
         if(!transaction){
             return 0;
@@ -65,6 +65,7 @@ export default function Transactions({transactionItems,screenType}) {
 
     function createTransaction(){
         screenType(2);
+        
     }
 
 
@@ -108,7 +109,7 @@ export default function Transactions({transactionItems,screenType}) {
                     day: '2-digit',
                     month: '2-digit',
                     year: 'numeric',
-                    timeZone: 'UTC', // Ensure the date is treated in UTC
+                    timeZone: 'UTC', 
                     });
                     return(
                         <div onMouseEnter={()=>setHover(index)} onMouseLeave={()=>{setHover("")}} id="transaction-div-child" key={index} className='my-5 bg-gray-300 h-24 w-56 rounded flex justify-center items-center flex-col' style={{backgroundColor:transaction.transaction_category?bgColorForEachCategory[transaction.transaction_category]:""}}>

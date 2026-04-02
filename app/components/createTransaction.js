@@ -6,14 +6,30 @@ export default function CreateTransaction({createTransaction}) {
     const [date , setDate] = useState('');
     const[category,setCategory]=useState('Grocery');
     const options=['Grocery','Food order','Mandatory','Comfort','Subscriptions'];
-   
+    function getMonth(num){
+       const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        ];
+        return months[num-1];
+    }
     function onsubmit(e){
         e.preventDefault();
         const transaction = {
             name: name,
             amount: amount,
             date: date,
-            month: date.split('-')[1],
+            month: getMonth(date.split('-')[1]),
             year: date.split('-')[0],
             category:category
         };
@@ -25,7 +41,7 @@ export default function CreateTransaction({createTransaction}) {
         
     }
     return(
-        <div className='text-white flex justify-center items-center h-full mt-5 '>
+        <div className='text-white flex justify-center items-center h-[85vh] mt-5 '>
             <form className="flex flex-col border-2 border-black rounded h-96 w-96  items-center bg-gray-800 ">
                 <div className="mt-5 h-1/5 w-full flex justify-around">
                     <label className='text-2xl'>Name:</label>

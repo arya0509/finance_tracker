@@ -5,31 +5,37 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
-  GithubAuthProvider,
   GoogleAuthProvider,
 } from "firebase/auth";
+//This is an auth object we are getting from the firebase.js 
+//Firebase handles the authentication from here
 import { auth } from "./firebase";
  
+//Creating a context which we can wrap around our root component in layout.js 
+//(Go to line 39 for the implementation )
 const AuthContext = createContext();
  
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
  
-  const googleSignIn = () => {
+  const googleSignIn = async() => {
     const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider);
+    provider.setCustomParameters({ prompt: 'select_account' });
+    return await signInWithPopup(auth, provider);
   };
  
-  const firebaseSignOut = () => {
-    return signOut(auth);
+  const firebaseSignOut = async() => {
+    return await signOut(auth);
   };
  
+  //onAuthStateChanged gets activated when the component mounts. Here attached the user's state to the current auth context 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
+    //When the component unmounts it returns a unsubscribe function that makes our onAuthStateChanged stop listening.  
     return () => unsubscribe();
-  }, [user]);
+  }, []);
  
   return (
     <AuthContext.Provider value={{ user, googleSignIn, firebaseSignOut }}>
@@ -37,7 +43,8 @@ export const AuthContextProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
- 
+
+//This function is what we will use in the rest of our code to access the user variable 
 export const useUserAuth = () => {
   return useContext(AuthContext);
 };

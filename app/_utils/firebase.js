@@ -7,12 +7,13 @@ import { getAuth } from "firebase/auth";
  
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+
+  apiKey: "AIzaSyDn0NTBUFk1xy-bIYSbZZQaHrecttFE5Oc",
+  authDomain: "finanncetracker.firebaseapp.com",
+  projectId: "finanncetracker",
+  storageBucket: "finanncetracker.firebasestorage.app",
+  messagingSenderId: "740971271840",
+  appId: "1:740971271840:web:e8ff4145a78a323f8adbc5"
 };
  
 // Initialize Firebase
