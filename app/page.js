@@ -15,13 +15,31 @@ export default function Page() {
   const {user, googleSignIn, firebaseSignOut} =useUserAuth();
   useEffect(()=>{
     if(user){
+    getUserFromDB(user)
     getMonths(); 
     }
    
   },[user])
   const [screen,setScreen]=useState(0);
   const [monthsAndYears,setMonthsAndYears]=useState([])
-
+  async function getUserFromDB(user){
+    const response = await fetch(`/api/user?userID=${user.uid}`,{
+      method:"GET",
+      headers:{
+        'Content-Type':'application/json',
+      }
+    })
+    if (!response.ok){
+      createUser(user)
+    }
+  }
+  async function createUser(user){
+    const res = await fetch ("api/user",{
+            method:"POST",
+            headers: { 'Content-Type': 'application/json' },
+            body:JSON.stringify({"displayName":user.displayName,"email":user.email,"uid":user.uid})
+        })
+  }
   //Get Transaction from monthID
   const [transaction,setTransaction]=useState([]);
   async function getTransFromID(month_id){

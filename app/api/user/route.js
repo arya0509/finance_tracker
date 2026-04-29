@@ -43,8 +43,7 @@ export  async function POST(req, res){
        
     
         const { displayName, email, uid } = body;
-        console.log("No error till before create");
-        console.log(typeof displayName);
+       
         const response=await prisma.user.create({
             data: {
                 user_id:uid,
